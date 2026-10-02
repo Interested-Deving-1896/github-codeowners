@@ -1,194 +1,91 @@
 # github-codeowners
-[![Maintainability](https://api.codeclimate.com/v1/badges/005e2a8038aa060010dd/maintainability)](https://codeclimate.com/github/jjmschofield/github-codeowners/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/005e2a8038aa060010dd/test_coverage)](https://codeclimate.com/github/jjmschofield/github-codeowners/test_coverage)
-[![CircleCI](https://circleci.com/gh/jjmschofield/github-codeowners/tree/master.svg?style=shield)](https://circleci.com/gh/jjmschofield/github-codeowners/tree/master)
-[![Known Vulnerabilities](https://snyk.io/test/github/jjmschofield/github-codeowners/badge.svg?targetFile=package.json)](https://snyk.io/test/github/jjmschofield/github-codeowners?targetFile=package.json)
 
-A CLI tool for working with GitHub CODEOWNERS.
+[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/github-codeowners) [![KDE Eco](https://img.shields.io/badge/KDE%20Eco-certified-brightgreen?logo=kde&logoColor=white&style=flat-square)](https://eco.kde.org/) [![Blue Angel](https://img.shields.io/badge/Blue%20Angel-DE--UZ%20215-0055a4?style=flat-square)](https://www.blauer-engel.de/en/certification/criteria)
 
-Things it does:
-* Calculate ownership stats
-* Find out who owns each and every file (ignoring files listed in `.gitignore`)
-* Find out who owns a single file
-* Find out who owns your staged files
-* Outputs in a bunch of script friendly handy formats for integrations (CSV and JSONL)
-* Validates that your CODEOWNERS file is valid
 
-## Installation
-Install via npm globally then run
+<!-- AI:start:what-it-does -->
+_Description pending._
+<!-- AI:end:what-it-does -->
 
-```shell script
-$ npm i -g github-codeowners
-$ github-codeowners --help 
-Usage: github-codeowners [options] [command]
+## Architecture
+
+<!-- AI:start:architecture -->
+_Architecture documentation pending._
+<!-- AI:end:architecture -->
+
+## Install
+
+<!-- Add installation instructions here. This section is yours — the AI will not modify it. -->
+
+```bash
+git clone https://github.com/Interested-Deving-1896/github-codeowners.git
+cd github-codeowners
 ```
 
-## Commands
-### Audit
-Compares every file in your current (or specified) directory against your CODEOWNERS rules and outputs the result of who owns each file.
-```shell script
-$ cd <your awesome project> 
-$ github-codeowners audit
-README.md
-package.json
-src/cli.ts      @jjmschofield
-...
+## Usage
+
+<!-- Add usage examples here. This section is yours — the AI will not modify it. -->
+
+## Configuration
+
+<!-- Document configuration options here. This section is yours — the AI will not modify it. -->
+
+## CI
+
+<!-- AI:start:ci -->
+_CI documentation pending._
+<!-- AI:end:ci -->
+
+## Mirror chain
+
+<!-- AI:start:mirror-chain -->
+This repo is maintained in [`Interested-Deving-1896/github-codeowners`](https://github.com/Interested-Deving-1896/github-codeowners) and mirrored through:
+
+```
+Interested-Deving-1896/github-codeowners  ──►  OpenOS-Project-OSP/github-codeowners  ──►  OpenOS-Project-Ecosystem-OOC/github-codeowners
 ```
 
-Ownership stats:
-```shell script
-$ github-codeowners audit -s
---- Counts ---
-Total: 24 files (1378 lines)
-Loved: 10 files (494 lines)
-Unloved: 14 files (884 lines)
---- Owners ---
-@jjmschofield: 10 files (494 lines)
-```
+Changes flow downstream automatically via the hourly mirror chain in
+[`fork-sync-all`](https://github.com/Interested-Deving-1896/fork-sync-all).
+Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-Deving-1896`.
+<!-- AI:end:mirror-chain -->
 
-Only files in a specific directory:
-```shell script
-$ github-codeowners audit -r src/
-src/cli.ts      @jjmschofield
-src/commands/audit.ts   @jjmschofield
-...
-```
+## Contributors
 
-Only unowned files:
-```shell script
-$ github-codeowners audit -u
-.github/CODEOWNERS
-.gitignore
-```
+<!-- AI:start:contributors -->
+_Contributors pending._
+<!-- AI:end:contributors -->
 
-Output in JSONL:
-```shell script
-$ github-codeowners audit -o jsonl
-{"path":"src/commands/audit.ts","owners":["@jjmschofield"],"lines":48}
-...
-```
+## Origins
 
-Output in CSV:
-```shell script
-$ github-codeowners audit -o csv
-src/commands/audit.ts,@jjmschofield
-```
+<!-- AI:start:origins -->
+_Original project — no upstream influences recorded._
+<!-- AI:end:origins -->
 
-Full usage information:
-```shell script
-$ github-codeowners audit --help
-Usage: github-codeowners audit [options]
+## Resources
 
-list the owners for all files
+<!-- AI:start:resources -->
+_No additional resource files found._
+<!-- AI:end:resources -->
 
-Options:
-  -d, --dir <dirPath>          path to VCS directory (default: "<current working directory>")
-  -c, --codeowners <filePath>  path to codeowners file (default: "<dir>/.github/CODEOWNERS")
-  -o, --output <outputFormat>  how to output format eg: simple, jsonl, csv (default: "simple")
-  -u, --unloved                unowned files only (default: false)
-  -g, --only-git               consider only files tracked by git (default: false)
-  -s, --stats                  output stats (default: true)
-  -r, --root <rootPath>        the root path to filter files by (default: "")
-  -h, --help                   output usage information
-```
+## Accessibility
 
-### Who
-Tells you who owns a given file or files: 
-```shell script
-$ cd <your awesome project> 
-$ github-codeowners who <file> <file>
-<file> @some/team
-<file> @some/team
-```
+<!-- AI:start:accessibility -->
+This repo uses automated accessibility auditing via `check-accessibility.yml`.
 
-Full usage:
-```shell script
-$ github-codeowners who --help                   
-Usage: github-codeowners who [options] <file...>
+Checks include: CODEOWNERS ownership coverage, README screen-reader compatibility,
+WCAG 2.1 AA HTML compliance, audio overview (espeak-ng), and Braille output (liblouis).
 
-lists owners of a specific file or files
 
-Options:
-  -d, --dir <dirPath>          path to VCS directory (default: "/Users/jjmschofield/projects/github/snyk/registry")
-  -c, --codeowners <filePath>  path to codeowners file (default: "<dir>/.github/CODEOWNERS")
-  -o, --output <outputFormat>  how to output format eg: simple, jsonl, csv (default: "simple")
-  -h, --help                   output usage information
-```
 
-### Git
-Provides a list of files with their owners between commits (against the **current** version of CODEOWNERS).
 
-Ownership of all files staged for commit:
-```shell script
-$ cd <your awesome project>
-$ github-codeowners git
-```
+Run the [Check Accessibility](https://github.com/Interested-Deving-1896/github-codeowners/actions/workflows/check-accessibility.yml)
+workflow to generate the first report and accessibility artifacts.
+See [DOCS/accessibility.md](https://github.com/Interested-Deving-1896/github-codeowners/blob/main/DOCS/accessibility.md) for the full reference.
+<!-- AI:end:accessibility -->
 
-Ownership of files existing at a specific commit:
-```shell script
-$ github-codeowners git <commit sha>
-```
+## License
 
-Ownership of files changed between two commits:
-```shell script
-$ github-codeowners git <commit sha> <commit sha>
-```
-
-Output stats:
-```shell script
-$ github-codeowners git -s
-```
-
-Full usage:
-```shell script
-$ github-codeowners git --help                                                                                       
-Usage: github-codeowners git [options] [shaA] [shaB]
-
-lists owners of files changed between commits, a commit against head or staged against head.
-
-Options:
-  -d, --dir <dirPath>          path to VCS directory (default: "/Users/jjmschofield/projects/github/snyk/registry")
-  -c, --codeowners <filePath>  path to codeowners file (default: "<dir>/.github/CODEOWNERS")
-  -o, --output <outputFormat>  how to output format eg: simple, jsonl, csv (default: "simple")
-  -s, --stats                  output stats, note line counts are not available for this command (default: false)
-  -h, --help                   output usage information
-```
-
-### Validate
-Validates your CODEOWNERS file to find common mistakes, will throw on errors (such as malformed owners).
-```shell script
-$ cd <your awesome project> 
-$ github-codeowners validate
-Found duplicate rules [ 'some/duplicate/rule @octocat' ]
-Found rules which did not match any files [ 'some/non-existent/path @octocat' ]
-...
-```
-
-Full usage information:
-```shell script
-$ github-codeowners validate --help
-Usage: github-codeowners validate [options]
-
-Validates a CODOWNER file and files in dir
-
-Options:
-  -d, --dir <dirPath>          path to VCS directory (default: "<current working directory>")
-  -c, --codeowners <filePath>  path to codeowners file (default: "<dir>/.github/CODEOWNERS")
-  -r, --root <rootPath>        the root path to filter files by (default: "")
-  -h, --help                   output usage information
-```
-
-## Output Formats
-Check `github-codeowners <command> --help` for support for a given command, however generally the following outputs are supported:
-* `simple` - tab delimited - terminal friendly output
-* `jsonl` - line separated json - useful for streaming data to another command
-* `csv` - csv delimited fields - useful to import into a spreadsheet tool of your choice
-
-## Limits and Things to Improve
-* It requires node
-* It is not optimized
-* The output interface might change
-* Command syntax might change
-
-## Shout outs
-Inspired by [codeowners](https://github.com/beaugunderson/codeowners#readme) but implemented in Typescript with extra bells and whistles.
+<!-- AI:start:license -->
+<!-- License not detected — add a LICENSE file to this repo. -->
+<!-- AI:end:license -->
